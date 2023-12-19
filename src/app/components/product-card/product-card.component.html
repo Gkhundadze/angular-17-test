@@ -1,0 +1,9 @@
+<div class="product-card">
+    <a [routerLink]="['/product', product.id]">
+        <img src={{product.image}} alt={{product.title}}>
+    </a>
+    <h3>{{product.title}}</h3>
+    <p>{{product.description}}</p>
+    <span class="star-shape rate">{{product.rating.rate}}</span>
+    <span class="star-shape count">{{product.rating.count}}</span>
+</div>
