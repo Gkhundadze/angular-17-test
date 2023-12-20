@@ -1,5 +1,28 @@
-<div class="product-card-wrapper">
-    @for (product of products; track product.id) {
-    <app-product-card [product]="product"></app-product-card>
-    }
+
+
+
+<div class="sidebar">
+    <app-loader></app-loader>
+    <h3>categories</h3>
+    <ul>
+        <li>
+            <button (click)="getAllProducts()">show all products</button>
+        </li>
+       
+        @for(category of categories; track category) {
+        <li>
+            <button (click)="filterByCategory(category)">{{category}}</button>
+        </li>
+        }
+    </ul>
+    
 </div>
+@if(noProducts) {
+    <app-loader></app-loader>
+}@else {
+    <div class="product-card-wrapper">
+        @for (product of products; track product.id) {
+        <app-product-card [product]="product"></app-product-card>
+        }
+    </div>
+}

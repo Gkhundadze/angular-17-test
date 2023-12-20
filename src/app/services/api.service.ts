@@ -13,4 +13,10 @@ export class ApiService {
   getSingleProduct(id:number):any {
     return this.http.get('https://fakestoreapi.com/products/'+id)
   }
+  getAllCategories():any {
+    return this.http.get('https://fakestoreapi.com/products/categories')
+  }
+  getProductsByCategory(category:string):any {
+    return this.http.get('https://fakestoreapi.com/products/category/' + category)
+  }
 }
