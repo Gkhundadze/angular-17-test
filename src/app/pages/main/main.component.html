@@ -1,22 +1,27 @@
 
 
-
-<div class="sidebar">
-    <app-loader></app-loader>
-    <h3>categories</h3>
-    <ul>
-        <li>
-            <button (click)="getAllProducts()">show all products</button>
-        </li>
-       
-        @for(category of categories; track category) {
-        <li>
-            <button (click)="filterByCategory(category)">{{category}}</button>
-        </li>
+ 
+    <div class="sidebar">
+        @if(noCategories) {
+            <app-loader></app-loader>
+        }@else {
+            <h3>categories</h3>
+            <ul>
+                <li>
+                    <button [class]="{'active-category': currentCategory === null}" (click)="getAllProducts()">show all products</button>
+                </li>
+               
+                @for(category of categories; track category) {
+                <li>
+                    <button [class]="{'active-category': currentCategory === category}" (click)="filterByCategory(category)">{{category}}</button>
+                </li>
+                }
+            </ul>
+            
         }
-    </ul>
-    
-</div>
+    </div>
+
+
 @if(noProducts) {
     <app-loader></app-loader>
 }@else {

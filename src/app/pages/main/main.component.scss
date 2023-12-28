@@ -21,6 +21,11 @@
                 background-color: #9e9393;
                 padding: 4px 8px;
                 border-radius: 5px;
+                transition: .3s;
+                &.active-category {
+                    font-size: 15px;
+                    font-weight: bold;
+                }
                 &:hover {
                     background-color: #dfcbcb;
                 }

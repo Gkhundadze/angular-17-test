@@ -3,3 +3,25 @@
     <h3 class="product-title">{{product.title}}</h3>
     <p class="product-description">{{product.description}}</p>
 </div>
+<div>
+    <ngx-slick-carousel class="carousel" 
+    #slickModal="slick-carousel" 
+    [config]="slideConfig" 
+    (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)"
+    (afterChange)="afterChange($event)"
+    (beforeChange)="beforeChange($event)">
+
+
+    @for(product of similarProducts; track product.id){
+    <app-product-card [product]="product"></app-product-card>
+    }
+
+
+</ngx-slick-carousel>
+
+<button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button>
+</div>

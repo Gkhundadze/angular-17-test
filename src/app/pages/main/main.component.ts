@@ -22,7 +22,8 @@ export class MainComponent implements OnInit, OnDestroy {
   public products:Products[] = []
   public noProducts:boolean = true
   public categories:string[] = []
-  
+  public noCategories:boolean = true
+  public currentCategory:string | null = null
   ngOnInit(): void {
     this.getAllProducts()
     this.getAllCategories()
@@ -41,13 +42,18 @@ export class MainComponent implements OnInit, OnDestroy {
       }
       
     })
+    this.currentCategory = null
   }
   getAllCategories() {
     this.api.getAllCategories().subscribe((res:string[]) => {
       this.categories = res
+      if(this.categories.length > 0) {
+        this.noCategories = false
+      }
     })
   }
   filterByCategory(category:string):any {
+    this.currentCategory = category
     this.api.getProductsByCategory(category).subscribe((res:any) => {
       this.products = res
     })
